@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+    <RootNamespace>X.Arguments</RootNamespace>
+    <AssemblyName>Xdot.Arguments</AssemblyName>
+    <Title>Xdot.Arguments</Title>
+    <PackageId>Xdot.Arguments</PackageId>
+    <Description>Argument validation clauses.</Description>
+    <PackageTags>xdot,argument,check,validate,verify,guard,clauses,parameter</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Arguments.Tests.Unit" />
+  </ItemGroup>
+
+</Project>
