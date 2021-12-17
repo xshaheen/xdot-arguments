@@ -64,9 +64,9 @@ public static partial class ItShouldExtensions {
     /// <inheritdoc cref="BeOneOf(It,int,IReadOnlyCollection{int},string?,string?)"/>
     public static string BeOneOf(this It _, string argument, IReadOnlyList<string> validValues, StringComparer? comparer = null, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
         if (validValues.Contains(argument, comparer ?? StringComparer.Ordinal)) {
-            throw new ArgumentException(message ?? $"Expected {paramName} was out of range to be one of [{validValues.Aggregate("", (p, c) => p + "," + c)}], but found {argument}.", paramName);
+            return argument;
         }
 
-        return argument;
+        throw new ArgumentException(message ?? $"Expected {paramName} was out of range to be one of [{validValues.Aggregate("", (p, c) => p + "," + c)}], but found {argument}.", paramName);
     }
 }
