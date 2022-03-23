@@ -7,21 +7,20 @@ using System.Runtime.CompilerServices;
 
 namespace X.Arguments;
 
-public static partial class ItShouldExtensions {
+public static partial class Argument {
     /// <summary>
     /// Throws an <see cref="ArgumentNullException" /> if <paramref name="argument" /> is null.
     /// Throws an <see cref="ArgumentException" /> if <paramref name="argument" /> is an empty or white space string.
     /// </summary>
-    /// <param name="_"></param>
     /// <param name="argument">The argument to check.</param>
     /// <param name="message">(Optional) Custom error message.</param>
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="paramName" /> if the value is not null, or an empty or white space string.</returns>
     /// <exception cref="ArgumentNullException">if <paramref name="argument" /> is null.</exception>
     /// <exception cref="ArgumentException">if <paramref name="argument" /> is an empty or white space string.</exception>
-    public static string NotBeNullOrWhiteSpace(this It _, [NotNull] string? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
-        NotBeNull(_, argument, message, paramName);
-        NotBeEmpty(_, argument, message, paramName);
+    public static string IsNotNullOrWhiteSpace([NotNull] string? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+        IsNotNull(argument, message, paramName);
+        IsNotEmpty(argument, message, paramName);
 
         if (_IsWhiteSpace(argument)) {
             throw new ArgumentException(message ?? $"Required argument {paramName} was empty.", paramName);

@@ -6,18 +6,17 @@ using System.Runtime.CompilerServices;
 
 namespace X.Arguments;
 
-public static partial class ItShouldExtensions {
+public static partial class Argument {
     /// <summary>
     /// Throws an <see cref="ArgumentException" /> if <paramref name="argument"/> is not one of the <paramref name="validValues"/>.
     /// </summary>
-    /// <param name="_"></param>
     /// <param name="argument">The argument to check.</param>
     /// <param name="validValues">The valid values.</param>
     /// <param name="message">(Optional) Custom error message</param>
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="argument" /> if value is not one of the <paramref name="validValues"/>.</returns>
     /// <exception cref="ArgumentException"></exception>
-    public static int BeOneOf(this It _, int argument, IReadOnlyCollection<int> validValues, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static int IsOneOf(int argument, IReadOnlyCollection<int> validValues, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
         if (validValues.Contains(argument)) {
             return argument;
         }
@@ -25,8 +24,8 @@ public static partial class ItShouldExtensions {
         throw new ArgumentException(message ?? $"Expected {paramName} to be one of [{validValues.Aggregate("", (p, c) => p + "," + c.ToString(CultureInfo.InvariantCulture))}], but found {argument.ToString(CultureInfo.InvariantCulture)}.", paramName);
     }
 
-    /// <inheritdoc cref="BeOneOf(It,int,IReadOnlyCollection{int},string?,string?)"/>
-    public static long BeOneOf(this It _, long argument, IReadOnlyCollection<long> validValues, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    /// <inheritdoc cref="IsOneOf(int,IReadOnlyCollection{int},string?,string?)"/>
+    public static long IsOneOf(long argument, IReadOnlyCollection<long> validValues, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
         if (validValues.Contains(argument)) {
             return argument;
         }
@@ -34,8 +33,8 @@ public static partial class ItShouldExtensions {
         throw new ArgumentException(message ?? $"Expected {paramName} to be one of [{validValues.Aggregate("", (p, c) => p + "," + c.ToString(CultureInfo.InvariantCulture))}], but found {argument.ToString(CultureInfo.InvariantCulture)}.", paramName);
     }
 
-    /// <inheritdoc cref="BeOneOf(It,int,IReadOnlyCollection{int},string?,string?)"/>
-    public static decimal BeOneOf(this It _, decimal argument, IReadOnlyCollection<decimal> validValues, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    /// <inheritdoc cref="IsOneOf(int,IReadOnlyCollection{int},string?,string?)"/>
+    public static decimal IsOneOf(decimal argument, IReadOnlyCollection<decimal> validValues, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
         if (validValues.Contains(argument)) {
             return argument;
         }
@@ -43,8 +42,8 @@ public static partial class ItShouldExtensions {
         throw new ArgumentException(message ?? $"Expected {paramName} to be one of [{validValues.Aggregate("", (p, c) => p + "," + c.ToString(CultureInfo.InvariantCulture))}], but found {argument.ToString(CultureInfo.InvariantCulture)}.", paramName);
     }
 
-    /// <inheritdoc cref="BeOneOf(It,int,IReadOnlyCollection{int},string?,string?)"/>
-    public static double BeOneOf(this It _, double argument, IReadOnlyCollection<double> validValues, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    /// <inheritdoc cref="IsOneOf(int,IReadOnlyCollection{int},string?,string?)"/>
+    public static double IsOneOf(double argument, IReadOnlyCollection<double> validValues, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
         if (validValues.Contains(argument)) {
             return argument;
         }
@@ -52,8 +51,8 @@ public static partial class ItShouldExtensions {
         throw new ArgumentException(message ?? $"Expected {paramName} to be one of [{validValues.Aggregate("", (p, c) => p + "," + c.ToString(CultureInfo.InvariantCulture))}], but found {argument.ToString(CultureInfo.InvariantCulture)}.", paramName);
     }
 
-    /// <inheritdoc cref="BeOneOf(It,int,IReadOnlyCollection{int},string?,string?)"/>
-    public static float BeOneOf(this It _, float argument, IReadOnlyCollection<float> validValues, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    /// <inheritdoc cref="IsOneOf(int,IReadOnlyCollection{int},string?,string?)"/>
+    public static float IsOneOf(float argument, IReadOnlyCollection<float> validValues, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
         if (validValues.Contains(argument)) {
             return argument;
         }
@@ -61,8 +60,8 @@ public static partial class ItShouldExtensions {
         throw new ArgumentException(message ?? $"Expected {paramName} to be one of [{validValues.Aggregate("", (p, c) => p + "," + c.ToString(CultureInfo.InvariantCulture))}], but found {argument.ToString(CultureInfo.InvariantCulture)}.", paramName);
     }
 
-    /// <inheritdoc cref="BeOneOf(It,int,IReadOnlyCollection{int},string?,string?)"/>
-    public static string BeOneOf(this It _, string argument, IReadOnlyList<string> validValues, StringComparer? comparer = null, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    /// <inheritdoc cref="IsOneOf(int,IReadOnlyCollection{int},string?,string?)"/>
+    public static string IsOneOf(string argument, IReadOnlyList<string> validValues, StringComparer? comparer = null, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
         if (validValues.Contains(argument, comparer ?? StringComparer.Ordinal)) {
             return argument;
         }

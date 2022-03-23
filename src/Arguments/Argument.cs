@@ -4,8 +4,4 @@
 
 namespace X.Arguments;
 
-public sealed class It {
-    private It() { }
-
-    public static It Should { get; } = new();
-}
+public static partial class Argument { }

@@ -8,16 +8,15 @@ using NoEnumeration = JetBrains.Annotations.NoEnumerationAttribute;
 
 namespace X.Arguments;
 
-public static partial class ItShouldExtensions {
+public static partial class Argument {
     /// <summary>Throws an <see cref="ArgumentNullException" /> if <paramref name="argument" /> is null.</summary>
-    /// <param name="_"></param>
     /// <param name="argument">The argument to check.</param>
     /// <param name="message">(Optional) Custom error message.</param>
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="argument" /> if the argument is not null.</returns>
     /// <exception cref="ArgumentException">if <paramref name="argument" /> is null.</exception>
     [return: NotNull]
-    public static T NotBeNull<T>(this It _, [NoEnumeration][NotNull] T? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static T IsNotNull<T>([NoEnumeration][NotNull] T? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
         if (argument is null) {
             if (message is null) {
                 throw new ArgumentNullException(paramName);
