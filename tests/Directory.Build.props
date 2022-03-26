@@ -3,23 +3,29 @@
   <Import Project="../Directory.Build.props" />
 
   <ItemGroup Label="Global packages">
-    <PackageReference Include="AutoFixture" Version="4.17.0" />
-    <PackageReference Include="FluentAssertions" Version="6.5.1" />
-    <PackageReference Include="NSubstitute" Version="4.2.2" />
+    <PackageReference Include="AutoBogus" Version="2.13.1" />
+    <PackageReference Include="Bogus" Version="34.0.1" />
+    <PackageReference Include="DeepCloner" Version="0.10.3" />
+    <PackageReference Include="FluentAssertions" Version="6.3.0" />
+    <PackageReference Include="Moq" Version="4.16.1" />
   </ItemGroup>
 
   <ItemGroup Label="Global usings">
-    <Using Include="AutoFixture" />
+    <Using Include="Moq" />
+    <Using Include="Bogus" />
     <Using Include="FluentAssertions" />
-    <Using Include="NSubstitute" />
     <Using Include="Xunit" />
     <Using Include="Xunit.Abstractions" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="NSubstitute.Analyzers.CSharp" Version="1.0.15">
+    <PackageReference Include="Moq.Analyzers" Version="0.0.9">
       <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Moq.Autocomplete" Version="0.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
