@@ -11,6 +11,7 @@
   <PropertyGroup>
     <IncludeSymbols>true</IncludeSymbols>
     <Deterministic>true</Deterministic>
+    <MinVerDefaultPreReleaseIdentifiers>preview.0</MinVerDefaultPreReleaseIdentifiers>
   </PropertyGroup>
 
   <PropertyGroup Label="Source Link">
