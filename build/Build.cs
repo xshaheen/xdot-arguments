@@ -1,6 +1,5 @@
 using Nuke.Common;
 using Nuke.Common.CI;
-using Nuke.Common.Execution;
 using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
@@ -10,7 +9,6 @@ using Nuke.Common.Utilities.Collections;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
-[CheckBuildProjectConfigurations]
 [ShutdownDotNetAfterServerBuild]
 class Build : NukeBuild {
     public static int Main() => Execute<Build>(build => build.Compile);
@@ -19,11 +17,15 @@ class Build : NukeBuild {
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
     [Solution] readonly Solution Solution;
+
     [GitRepository] readonly GitRepository GitRepository;
+
     static AbsolutePath SourceDirectory => RootDirectory / "src";
+
     static AbsolutePath TestsDirectory => RootDirectory / "tests";
 
     static AbsolutePath ArtifactsDirectory => RootDirectory / ".artifacts";
+
     static AbsolutePath TestResults => ArtifactsDirectory / "test-results";
 
     Target Clean => _ => _
