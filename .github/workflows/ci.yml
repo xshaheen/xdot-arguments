@@ -79,7 +79,7 @@ jobs:
 
     environment:
       name: "GitHub Packages"
-      url: https://github.com/xshaheen/xdot-paymob/packages
+      url: https://github.com/xshaheen/xdot-arguments/packages
 
     permissions:
       packages: write
@@ -108,7 +108,7 @@ jobs:
 
     environment:
       name: "NuGet"
-      url: https://www.nuget.org/packages/xdot-paymob
+      url: https://www.nuget.org/packages/xdot-arguments
 
     runs-on: windows-latest
 
@@ -122,9 +122,9 @@ jobs:
         run: |
           Get-ChildItem .\ -Filter *.nupkg |
           Where-Object { !$_.Name.Contains('preview') } |
-          ForEach-Object { |
-            Write-Host "Dotnet NuGet Push: $($_.Name)" |
-            dotnet nuget push $_ --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}} |
+          ForEach-Object {
+            Write-Host "Dotnet NuGet Push: $($_.Name)"
+            dotnet nuget push $_ --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}}
           }
         shell: pwsh
 
