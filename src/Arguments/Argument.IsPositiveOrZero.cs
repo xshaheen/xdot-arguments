@@ -2,11 +2,30 @@
 // Licensed under the Apache 2.0 license.
 // See the LICENSE.txt file in the project root for full license information.
 
+#if NET7_0_OR_GREATER
+using System.Numerics;
+#endif
 using System.Runtime.CompilerServices;
 
 namespace X.Arguments;
 
 public static partial class Argument {
+    #if NET7_0_OR_GREATER
+
+    /// <summary>Throws an <see cref="ArgumentOutOfRangeException" /> if <paramref name="argument" /> is negative.</summary>
+    /// <param name="argument">The argument to check.</param>
+    /// <param name="message">(Optional) Custom error message.</param>
+    /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
+    /// <returns><paramref name="paramName" /> if the argument is not negative.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">if <paramref name="argument" /> is negative.</exception>
+    public static T IsPositiveOrZero<T>(T argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) where T: INumber<T> {
+        return argument >= T.Zero
+            ? argument
+            : throw new ArgumentOutOfRangeException(message ?? $"The argument {_AssertString(paramName)} cannot be negative.", paramName);
+    }
+
+    #endif
+
     /// <summary>Throws an <see cref="ArgumentOutOfRangeException" /> if <paramref name="argument" /> is negative.</summary>
     /// <param name="argument">The argument to check.</param>
     /// <param name="message">(Optional) Custom error message.</param>
