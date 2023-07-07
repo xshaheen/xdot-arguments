@@ -16,7 +16,7 @@ public static partial class Argument {
     /// <returns><paramref name="argument" /> if the argument is not null.</returns>
     /// <exception cref="ArgumentException">if <paramref name="argument" /> is null.</exception>
     [return: NotNull]
-    public static T IsNotNull<T>([NoEnumeration][NotNull] T? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static T IsNotNull<T>([NoEnumeration][NotNull] T? argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         if (argument is null) {
             if (message is null) {
                 throw new ArgumentNullException(paramName);

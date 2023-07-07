@@ -18,7 +18,7 @@ public static partial class Argument {
     /// <returns><paramref name="paramName" /> if the value is not null or default(T).</returns>
     /// <exception cref="ArgumentNullException">if <paramref name="argument" /> is null.</exception>
     /// <exception cref="ArgumentException">if <paramref name="argument" /> is default for that type.</exception>
-    public static T IsNotNullOrDefault<T>([NotNull] T? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) where T : struct {
+    public static T IsNotNullOrDefault<T>([NotNull] T? argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) where T : struct {
         IsNotNull(argument, message, paramName);
         IsNotDefault(argument.Value, message, paramName);
 

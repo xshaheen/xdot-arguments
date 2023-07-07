@@ -13,51 +13,51 @@ public static partial class Argument {
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="paramName" /> if the argument is negative.</returns>
     /// <exception cref="ArgumentOutOfRangeException">if <paramref name="argument" /> is non negative.</exception>
-    public static int IsNegative(int argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static int IsNegative(int argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         return argument < 0
             ? argument
-            : throw new ArgumentOutOfRangeException(message ?? $"The argument {paramName} cannot be non negative.", paramName);
+            : throw new ArgumentOutOfRangeException(message ?? $"The argument {_AssertString(paramName)} cannot be non negative.", paramName);
     }
 
     /// <inheritdoc cref="IsNegative(int,string?,string?)"/>
-    public static long IsNegative(long argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static long IsNegative(long argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         return argument < 0L
             ? argument
-            : throw new ArgumentOutOfRangeException(message ?? $"The argument {paramName} cannot be non negative.", paramName);
+            : throw new ArgumentOutOfRangeException(message ?? $"The argument {_AssertString(paramName)} cannot be non negative.", paramName);
     }
 
     /// <inheritdoc cref="IsNegative(int,string?,string?)"/>
-    public static float IsNegative(float argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static float IsNegative(float argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         return argument < 0F
             ? argument
-            : throw new ArgumentOutOfRangeException(message ?? $"The argument {paramName} cannot be non negative.", paramName);
+            : throw new ArgumentOutOfRangeException(message ?? $"The argument {_AssertString(paramName)} cannot be non negative.", paramName);
     }
 
     /// <inheritdoc cref="IsNegative(int,string?,string?)"/>
-    public static double IsNegative(double argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static double IsNegative(double argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         return argument < 0D
             ? argument
-            : throw new ArgumentOutOfRangeException(message ?? $"The argument {paramName} cannot be non negative.", paramName);
+            : throw new ArgumentOutOfRangeException(message ?? $"The argument {_AssertString(paramName)} cannot be non negative.", paramName);
     }
 
     /// <inheritdoc cref="IsNegative(int,string?,string?)"/>
-    public static decimal IsNegative(decimal argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static decimal IsNegative(decimal argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         return argument < 0M
             ? argument
-            : throw new ArgumentOutOfRangeException(message ?? $"The argument {paramName} cannot be non negative.", paramName);
+            : throw new ArgumentOutOfRangeException(message ?? $"The argument {_AssertString(paramName)} cannot be non negative.", paramName);
     }
 
     /// <inheritdoc cref="IsNegative(int,string?,string?)"/>
-    public static short IsNegative(short argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static short IsNegative(short argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         return argument < 0
             ? argument
-            : throw new ArgumentOutOfRangeException(message ?? $"The argument {paramName} cannot be non negative.", paramName);
+            : throw new ArgumentOutOfRangeException(message ?? $"The argument {_AssertString(paramName)} cannot be non negative.", paramName);
     }
 
     /// <inheritdoc cref="IsNegative(int,string?,string?)"/>
-    public static TimeSpan IsNegative(TimeSpan argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static TimeSpan IsNegative(TimeSpan argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         return argument < TimeSpan.Zero
             ? argument
-            : throw new ArgumentOutOfRangeException(message ?? $"The argument {paramName} cannot be non negative.", paramName);
+            : throw new ArgumentOutOfRangeException(message ?? $"The argument {_AssertString(paramName)} cannot be non negative.", paramName);
     }
 }

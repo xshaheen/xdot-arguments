@@ -18,19 +18,19 @@ public static partial class Argument {
     /// <returns><paramref name="paramName" /> if the value is not null, or an empty or white space string.</returns>
     /// <exception cref="ArgumentNullException">if <paramref name="argument" /> is null.</exception>
     /// <exception cref="ArgumentException">if <paramref name="argument" /> is an empty or white space string.</exception>
-    public static string IsNotNullOrWhiteSpace([NotNull] string? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static string IsNotNullOrWhiteSpace([NotNull] string? argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         IsNotNull(argument, message, paramName);
         IsNotEmpty(argument, message, paramName);
 
         if (_IsWhiteSpace(argument)) {
-            throw new ArgumentException(message ?? $"Required argument {paramName} was empty.", paramName);
+            throw new ArgumentException(message ?? $"Required argument {_AssertString(paramName)} was empty.", paramName);
         }
 
         return argument;
     }
 
     private static bool _IsWhiteSpace(string value) {
-        for (int i = 0; i < value.Length; i++) {
+        for (var i = 0; i < value.Length; i++) {
             if (!char.IsWhiteSpace(value[i])) {
                 return false;
             }

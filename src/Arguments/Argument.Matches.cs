@@ -18,9 +18,9 @@ public static partial class Argument {
     /// <returns><paramref name="argument" /> if the value matches <paramref name="pattern"/>.</returns>
     /// <exception cref="ArgumentException">if <paramref name="argument" /> is not match <paramref name="pattern"/>.</exception>
     // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Global
-    public static string Matches(string argument, Regex pattern, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static string Matches(string argument, Regex pattern, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         if (!pattern.IsMatch(argument)) {
-            throw new ArgumentException(message ?? $"Argument {paramName} was not in required format.", paramName);
+            throw new ArgumentException(message ?? $"Argument {_AssertString(paramName)} was not in required format.", paramName);
         }
 
         return argument;

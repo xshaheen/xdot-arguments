@@ -16,16 +16,16 @@ public static partial class Argument {
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="paramName" /> if the value is not empty.</returns>
     /// <exception cref="ArgumentException">if <paramref name="argument" /> is empty.</exception>
-    [return: NotNullIfNotNull("argument")]
-    public static IReadOnlyCollection<T>? IsNotEmpty<T>(IReadOnlyCollection<T>? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    [return: NotNullIfNotNull(nameof(argument))]
+    public static IReadOnlyCollection<T>? IsNotEmpty<T>(IReadOnlyCollection<T>? argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         return argument is { Count: 0 }
             ? throw new ArgumentException(message ?? "Required argument " + paramName + " was empty.", paramName)
             : argument;
     }
 
     /// <inheritdoc cref="IsNotEmpty{T}(IReadOnlyCollection{T}?,string?,string?)"/>
-    [return: NotNullIfNotNull("argument")]
-    public static IEnumerable<T>? IsNotEmpty<T>([NoEnumeration] IEnumerable<T>? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    [return: NotNullIfNotNull(nameof(argument))]
+    public static IEnumerable<T>? IsNotEmpty<T>([NoEnumeration] IEnumerable<T>? argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         if (argument is null) {
             return argument;
         }
@@ -38,8 +38,8 @@ public static partial class Argument {
     }
 
     /// <inheritdoc cref="IsNotEmpty{T}(IReadOnlyCollection{T}?,string?,string?)"/>
-    [return: NotNullIfNotNull("argument")]
-    public static string? IsNotEmpty(string? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    [return: NotNullIfNotNull(nameof(argument))]
+    public static string? IsNotEmpty(string? argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         return argument is { Length: 0 }
             ? throw new ArgumentException(message ?? "Required argument " + paramName + " was empty.", paramName)
             : argument;

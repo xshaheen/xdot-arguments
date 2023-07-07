@@ -14,11 +14,11 @@ public static partial class Argument {
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="paramName" /> if the argument has not null.</returns>
     /// <exception cref="ArgumentOutOfRangeException">if <paramref name="argument" /> has any null element.</exception>
-    public static IReadOnlyCollection<T> HasNoNulls<T>([NotNull] IReadOnlyCollection<T?>? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) where T : class {
+    public static IReadOnlyCollection<T> HasNoNulls<T>([NotNull] IReadOnlyCollection<T?>? argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) where T : class {
         IsNotNull(argument, paramName);
 
         if (argument.Any(e => e is null)) {
-            throw new ArgumentException(message ?? $"The argument {paramName} cannot contains null elements.", paramName);
+            throw new ArgumentException(message ?? $"The argument {_AssertString(paramName)} cannot contains null elements.", paramName);
         }
 
         return argument!;
@@ -30,11 +30,11 @@ public static partial class Argument {
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="paramName" /> if the argument has not null or empty element.</returns>
     /// <exception cref="ArgumentOutOfRangeException">if <paramref name="argument" /> has any null or empty element.</exception>
-    public static IReadOnlyCollection<string> HasNoNullOrEmptyElements([NotNull] IReadOnlyCollection<string?>? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static IReadOnlyCollection<string> HasNoNullOrEmptyElements([NotNull] IReadOnlyCollection<string?>? argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         IsNotNull(argument, paramName);
 
         if (argument.Any(string.IsNullOrEmpty)) {
-            throw new ArgumentException(message ?? $"The argument {paramName} cannot contains empty elements.", paramName);
+            throw new ArgumentException(message ?? $"The argument {_AssertString(paramName)} cannot contains empty elements.", paramName);
         }
 
         return argument!;
@@ -46,11 +46,11 @@ public static partial class Argument {
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="paramName" /> if the argument has not null or white space element.</returns>
     /// <exception cref="ArgumentOutOfRangeException">if <paramref name="argument" /> has any null or white space element.</exception>
-    public static IReadOnlyCollection<string> HasNoNullOrWhiteSpaceElements([NotNull] IReadOnlyCollection<string?>? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static IReadOnlyCollection<string> HasNoNullOrWhiteSpaceElements([NotNull] IReadOnlyCollection<string?>? argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         IsNotNull(argument, paramName);
 
         if (argument.Any(string.IsNullOrWhiteSpace)) {
-            throw new ArgumentException(message ?? $"The argument {paramName} cannot contains empty or white space elements.", paramName);
+            throw new ArgumentException(message ?? $"The argument {_AssertString(paramName)} cannot contains empty or white space elements.", paramName);
         }
 
         return argument!;

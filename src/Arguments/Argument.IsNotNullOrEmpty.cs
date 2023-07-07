@@ -15,7 +15,7 @@ public static partial class Argument {
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="paramName" /> if the value is not null or empty.</returns>
     /// <exception cref="ArgumentException">if <paramref name="argument" /> is null or empty.</exception>
-    public static IReadOnlyCollection<T> IsNotNullOrEmpty<T>([NotNull] IReadOnlyCollection<T>? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static IReadOnlyCollection<T> IsNotNullOrEmpty<T>([NotNull] IReadOnlyCollection<T>? argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         IsNotNull(argument, message, paramName);
         IsNotEmpty(argument, message, paramName);
 
@@ -23,7 +23,7 @@ public static partial class Argument {
     }
 
     /// <inheritdoc cref="IsNotNullOrEmpty{T}(System.Collections.Generic.IEnumerable{T}?,string?,string?)"/>
-    public static IEnumerable<T> IsNotNullOrEmpty<T>([NoEnumeration][NotNull] IEnumerable<T>? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static IEnumerable<T> IsNotNullOrEmpty<T>([NoEnumeration][NotNull] IEnumerable<T>? argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         IsNotNull(argument, message, paramName);
         IsNotEmpty(argument, message, paramName);
 
@@ -31,7 +31,7 @@ public static partial class Argument {
     }
 
     /// <inheritdoc cref="IsNotNullOrEmpty{T}(System.Collections.Generic.IEnumerable{T}?,string?,string?)"/>
-    public static string IsNotNullOrEmpty([NotNull] string? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) {
+    public static string IsNotNullOrEmpty([NotNull] string? argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) {
         IsNotNull(argument, message, paramName);
         IsNotEmpty(argument, message, paramName);
 

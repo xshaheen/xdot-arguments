@@ -16,12 +16,12 @@ public static partial class Argument {
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="paramName" /> if the argument is not equal to <paramref name="expected"/>.</returns>
     /// <exception cref="ArgumentOutOfRangeException">if <paramref name="argument" /> is not equal to <paramref name="expected"/>.</exception>
-    public static T IsEqualTo<T>(T argument, T expected, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) where T : IComparable, IComparable<T> {
+    public static T IsEqualTo<T>(T argument, T expected, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) where T : IComparable, IComparable<T> {
         if (argument.CompareTo(expected) == 0) {
             return argument;
         }
 
-        throw new ArgumentOutOfRangeException(message ?? $"Expected argument {paramName} to be equal to {expected._ToInvariantString()}, but found {argument._ToInvariantString()}.", paramName);
+        throw new ArgumentOutOfRangeException(message ?? $"Expected argument {_AssertString(paramName)} to be equal to {expected._ToInvariantString()}, but found {argument._ToInvariantString()}.", paramName);
     }
 
     /// <summary>Throws an <see cref="ArgumentOutOfRangeException" /> if <paramref name="argument" /> is not less than or equal to <paramref name="expected"/>.</summary>
@@ -31,12 +31,12 @@ public static partial class Argument {
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="paramName" /> if the argument is less than or equal to <paramref name="expected"/>.</returns>
     /// <exception cref="ArgumentOutOfRangeException">if <paramref name="argument" /> is not less than or equal to <paramref name="expected"/>.</exception>
-    public static T IsLessThanOrEqualTo<T>(T argument, T expected, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) where T : IComparable, IComparable<T> {
+    public static T IsLessThanOrEqualTo<T>(T argument, T expected, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) where T : IComparable, IComparable<T> {
         if (argument.CompareTo(expected) <= 0) {
             return argument;
         }
 
-        throw new ArgumentOutOfRangeException(message ?? $"Expected argument {paramName} to be less than or equal to {expected._ToInvariantString()}.", paramName);
+        throw new ArgumentOutOfRangeException(message ?? $"Expected argument {_AssertString(paramName)} to be less than or equal to {expected._ToInvariantString()}.", paramName);
     }
 
     /// <summary>Throws an <see cref="ArgumentOutOfRangeException" /> if <paramref name="argument" /> is not greater than or equal to <paramref name="expected"/>.</summary>
@@ -46,12 +46,12 @@ public static partial class Argument {
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="paramName" /> if the argument is greater than or equal to <paramref name="expected"/>.</returns>
     /// <exception cref="ArgumentOutOfRangeException">if <paramref name="argument" /> is not greater than or equal to <paramref name="expected"/>.</exception>
-    public static T IsGreaterThanOrEqualTo<T>(T argument, T expected, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) where T : IComparable, IComparable<T> {
+    public static T IsGreaterThanOrEqualTo<T>(T argument, T expected, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) where T : IComparable, IComparable<T> {
         if (argument.CompareTo(expected) >= 0) {
             return argument;
         }
 
-        throw new ArgumentOutOfRangeException(message ?? $"Expected argument {paramName} to be greater than or equal to {expected._ToInvariantString()}.", paramName);
+        throw new ArgumentOutOfRangeException(message ?? $"Expected argument {_AssertString(paramName)} to be greater than or equal to {expected._ToInvariantString()}.", paramName);
     }
 
     /// <summary>Throws an <see cref="ArgumentOutOfRangeException" /> if <paramref name="argument" /> is not less than <paramref name="expected"/>.</summary>
@@ -61,12 +61,12 @@ public static partial class Argument {
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="paramName" /> if the argument is less than <paramref name="expected"/>.</returns>
     /// <exception cref="ArgumentOutOfRangeException">if <paramref name="argument" /> is not less than <paramref name="expected"/>.</exception>
-    public static T IsLessThan<T>(T argument, T expected, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) where T : IComparable, IComparable<T> {
+    public static T IsLessThan<T>(T argument, T expected, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) where T : IComparable, IComparable<T> {
         if (argument.CompareTo(expected) < 0) {
             return argument;
         }
 
-        throw new ArgumentOutOfRangeException(message ?? $"Expected argument {paramName} to be less than {expected._ToInvariantString()}.", paramName);
+        throw new ArgumentOutOfRangeException(message ?? $"Expected argument {_AssertString(paramName)} to be less than {expected._ToInvariantString()}.", paramName);
     }
 
     /// <summary>Throws an <see cref="ArgumentOutOfRangeException" /> if <paramref name="argument" /> is not greater than <paramref name="expected"/>.</summary>
@@ -76,12 +76,12 @@ public static partial class Argument {
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="paramName" /> if the argument is greater than <paramref name="expected"/>.</returns>
     /// <exception cref="ArgumentOutOfRangeException">if <paramref name="argument" /> is not greater than <paramref name="expected"/>.</exception>
-    public static T IsGreaterThan<T>(T argument, T expected, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) where T : IComparable, IComparable<T> {
+    public static T IsGreaterThan<T>(T argument, T expected, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) where T : IComparable, IComparable<T> {
         if (argument.CompareTo(expected) > 0) {
             return argument;
         }
 
-        throw new ArgumentOutOfRangeException(message ?? $"Expected argument {paramName} to be greater than {expected._ToInvariantString()}.", paramName);
+        throw new ArgumentOutOfRangeException(message ?? $"Expected argument {_AssertString(paramName)} to be greater than {expected._ToInvariantString()}.", paramName);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public static partial class Argument {
     /// <param name="minimumValueParamName"></param>
     /// <param name="maximumValueParamName"></param>
     /// <exception cref="ArgumentException">if the <paramref name="minimumValue"/> is greater than <paramref name="maximumValue"/>.</exception>
-    public static void ValidRange<T>(T minimumValue, T maximumValue, string? message = null, [CallerArgumentExpression("minimumValue")] string? minimumValueParamName = null, [CallerArgumentExpression("maximumValue")] string? maximumValueParamName = null) where T : IComparable, IComparable<T> {
+    public static void ValidRange<T>(T minimumValue, T maximumValue, string? message = null, [CallerArgumentExpression(nameof(minimumValue))] string? minimumValueParamName = null, [CallerArgumentExpression(nameof(maximumValue))] string? maximumValueParamName = null) where T : IComparable, IComparable<T> {
         if (minimumValue.CompareTo(maximumValue) > 0) {
             throw new ArgumentException(message ?? $"{minimumValueParamName} should be less or equal than {maximumValueParamName}", minimumValueParamName);
         }
@@ -117,9 +117,9 @@ public static partial class Argument {
         T minimumValue,
         T maximumValue,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentParamName = null,
-        [CallerArgumentExpression("minimumValue")] string? minimumValueParamName = null,
-        [CallerArgumentExpression("maximumValue")] string? maximumValueParamName = null
+        [CallerArgumentExpression(nameof(argument))] string? argumentParamName = null,
+        [CallerArgumentExpression(nameof(minimumValue))] string? minimumValueParamName = null,
+        [CallerArgumentExpression(nameof(maximumValue))] string? maximumValueParamName = null
     ) where T : IComparable, IComparable<T> {
         ValidRange(minimumValue, maximumValue, message: null, minimumValueParamName, maximumValueParamName);
 
@@ -146,9 +146,9 @@ public static partial class Argument {
         T minimumValue,
         T maximumValue,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentParamName = null,
-        [CallerArgumentExpression("minimumValue")] string? minimumValueParamName = null,
-        [CallerArgumentExpression("maximumValue")] string? maximumValueParamName = null
+        [CallerArgumentExpression(nameof(argument))] string? argumentParamName = null,
+        [CallerArgumentExpression(nameof(minimumValue))] string? minimumValueParamName = null,
+        [CallerArgumentExpression(nameof(maximumValue))] string? maximumValueParamName = null
     ) where T : IComparable, IComparable<T> {
         ValidRange(minimumValue, maximumValue, message: null, minimumValueParamName, maximumValueParamName);
 
@@ -175,9 +175,9 @@ public static partial class Argument {
         T minimumValue,
         T maximumValue,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentParamName = null,
-        [CallerArgumentExpression("minimumValue")] string? minimumValueParamName = null,
-        [CallerArgumentExpression("maximumValue")] string? maximumValueParamName = null
+        [CallerArgumentExpression(nameof(argument))] string? argumentParamName = null,
+        [CallerArgumentExpression(nameof(minimumValue))] string? minimumValueParamName = null,
+        [CallerArgumentExpression(nameof(maximumValue))] string? maximumValueParamName = null
     ) where T : IComparable, IComparable<T> {
         ValidRange(minimumValue, maximumValue, message: null, minimumValueParamName, maximumValueParamName);
 
@@ -204,9 +204,9 @@ public static partial class Argument {
         T minimumValue,
         T maximumValue,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentParamName = null,
-        [CallerArgumentExpression("minimumValue")] string? minimumValueParamName = null,
-        [CallerArgumentExpression("maximumValue")] string? maximumValueParamName = null
+        [CallerArgumentExpression(nameof(argument))] string? argumentParamName = null,
+        [CallerArgumentExpression(nameof(minimumValue))] string? minimumValueParamName = null,
+        [CallerArgumentExpression(nameof(maximumValue))] string? maximumValueParamName = null
     ) where T : IComparable, IComparable<T> {
         ValidRange(minimumValue, maximumValue, message: null, minimumValueParamName, maximumValueParamName);
 
@@ -234,9 +234,9 @@ public static partial class Argument {
         T minimumValue,
         T maximumValue,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentParamName = null,
-        [CallerArgumentExpression("minimumValue")] string? minimumValueParamName = null,
-        [CallerArgumentExpression("maximumValue")] string? maximumValueParamName = null
+        [CallerArgumentExpression(nameof(argument))] string? argumentParamName = null,
+        [CallerArgumentExpression(nameof(minimumValue))] string? minimumValueParamName = null,
+        [CallerArgumentExpression(nameof(maximumValue))] string? maximumValueParamName = null
     ) where T : IComparable, IComparable<T> {
         ValidRange(minimumValue, maximumValue, message: null, minimumValueParamName, maximumValueParamName);
 
@@ -251,7 +251,7 @@ public static partial class Argument {
         throw new ArgumentOutOfRangeException(message);
     }
 
-    [return: NotNullIfNotNull("obj")]
+    [return: NotNullIfNotNull(nameof(obj))]
     private static string? _ToInvariantString(this object? obj) {
         return obj switch {
             null => null,

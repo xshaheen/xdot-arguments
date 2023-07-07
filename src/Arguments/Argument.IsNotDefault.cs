@@ -13,22 +13,22 @@ public static partial class Argument {
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="argument" /> if the value is not default for that type.</returns>
     /// <exception cref="ArgumentException">if <paramref name="argument" /> is default for that type.</exception>
-    public static T IsNotDefault<T>(T argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) where T : struct {
+    public static T IsNotDefault<T>(T argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) where T : struct {
         if (EqualityComparer<T>.Default.Equals(argument, default)) {
-            throw new ArgumentException(message ?? $"{paramName} cannot be the default value of {typeof(T).Name}.", paramName);
+            throw new ArgumentException(message ?? $"{_AssertString(paramName)} cannot be the default value of {typeof(T).Name}.", paramName);
         }
 
         return argument;
     }
 
     /// <inheritdoc cref="IsNotDefault{T}(T,string?,string?)"/>
-    public static T? IsNotDefault<T>(T? argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) where T : struct {
+    public static T? IsNotDefault<T>(T? argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) where T : struct {
         if (argument is null) {
             return argument;
         }
 
         if (EqualityComparer<T>.Default.Equals(argument.Value, default)) {
-            throw new ArgumentException(message ?? $"{paramName} cannot be the default value of {typeof(T).Name}.", paramName);
+            throw new ArgumentException(message ?? $"{_AssertString(paramName)} cannot be the default value of {typeof(T).Name}.", paramName);
         }
 
         return argument;

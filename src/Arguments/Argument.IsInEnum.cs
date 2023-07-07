@@ -15,7 +15,7 @@ public static partial class Argument {
     /// <param name="paramName">Parameter name (auto generated no need to pass it).</param>
     /// <returns><paramref name="argument" /> if the value is not out of range.</returns>
     /// <exception cref="InvalidEnumArgumentException"><paramref name="argument" /> if the value is out of range.</exception>
-    public static T IsInEnum<T>(T argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) where T : struct, Enum {
+    public static T IsInEnum<T>(T argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) where T : struct, Enum {
         if (Enum.IsDefined(typeof(T), argument)) {
             return argument;
         }
@@ -30,7 +30,7 @@ public static partial class Argument {
     }
 
     /// <inheritdoc cref="IsInEnum{T}(T,string?,string?)"/>
-    public static int IsInEnum<T>(int argument, string? message = null, [CallerArgumentExpression("argument")] string? paramName = null) where T : struct, Enum {
+    public static int IsInEnum<T>(int argument, string? message = null, [CallerArgumentExpression(nameof(argument))] string? paramName = null) where T : struct, Enum {
         if (Enum.IsDefined(typeof(T), argument)) {
             return argument;
         }
