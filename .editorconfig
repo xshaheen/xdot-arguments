@@ -50,7 +50,11 @@ trim_trailing_whitespace = false
 
 ############ .NET Code Style Severities
 
-# CA1716:Identifiers should not match keywords
+# CA5394: Do not use insecure randomness
+dotnet_diagnostic.ca5394.severity = suggestion
+# CA1861: Avoid constant arrays as arguments
+dotnet_diagnostic.ca1861.severity = suggestion
+# CA1716: Identifiers should not match keywords
 dotnet_diagnostic.ca1716.severity = suggestion
 # CA2007: Consider calling ConfigureAwait on the awaited task
 dotnet_diagnostic.ca2007.severity = none
